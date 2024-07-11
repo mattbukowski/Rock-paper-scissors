@@ -1,78 +1,80 @@
-// Create variable to store computer choice
-// Then create function to call for computer choice
-// Now I want to assign numerical computer choice to one of three values: "rock", "paper" or "scissors", I will use 'if' statement
+//I will start over here
+// Create new variables for human and computer scores, also for round result
 
-let computerChoice = 0;
-
-function getComputerChoice() {
-    computerChoice = Math.floor(Math.random() * (4 - 1))
-    if (computerChoice == 0) {
-        return "Rock";
-    } else if (computerChoice == 1) {
-        return "Paper";
-    } else {
-        return "Scissors";
-    }
-}
-
-// Create variable to store human choice from user input
-// Create function to call for human choice
-
-let humanChoice = prompt("Choose: Rock/Paper/Scissors").toLowerCase();
-
-function getHumanChoice() {
-    if (humanChoice == "rock") {
-        return "Rock";
-    } else if (humanChoice == "paper") {
-        return "Paper";
-    } else if (humanChoice == "scissors") {
-        return "Scissors";
-    }
-}
-
-// Create variable to store a score for computer choice
-// Create variable to store a score for human choice
-
+let playRoundResult;
 let computerScore = 0;
 let humanScore = 0;
 
-// Now I need to write a function that compares human and computer choices and gives points to the winner
-// Need to assign values to rock/paper/scissors
+//Create variable to store computer choice
+//Create funtion to get computer choice
 
-function playRound() {
-    if (humanChoice == "rock" && computerChoice == 0) {
-        return "It's a draw :|";
-    } else if (humanChoice == "rock" && computerChoice == 1) {
-        computerScore = ++computerScore
-        return "You lost! Paper beats rock :(";
-    } else if (humanChoice == "rock" && computerChoice == 2) {
-        humanScore = ++humanScore
-        return "You won! Rock beats scissors :D";
-    }
+//let choice = Math.floor(Math.random() * 3) + 1;
 
-    if (humanChoice == "paper" && computerChoice == 0) {
-        humanScore = ++humanScore
-        return "You won! Paper beats rock :D";
-    } else if (humanChoice == "paper" && computerChoice == 1) {
-        return "It's a draw :|";
-    } else if (humanChoice === "paper" && computerChoice == 2) {
-        computerScore = ++computerScore
-        return "You lost! Scissors beats paper :(";
-    }
+//function getComputerChoice() {
+//if (choice === 1) return "ROCK";
+// if (choice === 2) return "PAPER";
+// return "SCISSORS";
+//}
 
-    if (humanChoice == "scissors" && computerChoice == 0) {
-        computerScore = ++computerScore
-        return "You lost! Rock beats scissors :(";
-    } else if (humanChoice == "scissors" && computerChoice == 1) {
-        humanScore = ++humanScore
-        return "You won! Scissors beats paper :D";
-    } else if (humanChoice == "scissors" && computerChoice == 2) {
-        return "It's a draw :|";
+//Create variable to store human choice
+
+//let humanChoice = prompt('Choose: Rock/Paper/Scissors', '');
+
+//Assign human and computer choices to the variables
+//Human choice is turn to upper case
+//const playerSelection = humanChoice.toUpperCase();
+//const computerSelection = getComputerChoice();
+
+//Create function to play single round
+
+//function playRound(playerSelection, computerSelection) {
+//const win = (computerSelection === "ROCK" && playerSelection === "PAPER") || (computerSelection === 'SCISSOR' && playerSelection === //'ROCK') || (computerSelection === 'PAPER' && playerSelection === 'SCISSOR');
+//if (computerSelection === playerSelection) return "It's a draw :|";
+//if (win) {
+//    humanScore++;
+//    return "You win!";
+//}
+//computerScore++;
+//return "You lose!";
+//}
+
+//Assign func playRound to the variable playRoundResult
+
+//playRoundResult = playRound(playerSelection, computerSelection);
+
+
+//Create function for 5 round game
+
+const playGame = function playGame() {
+    for (let i = 0; i < 5; i++) {
+        let choice = Math.floor(Math.random() * 3) + 1;
+        function getComputerChoice() {
+            if (choice === 1) return "ROCK";
+            if (choice === 2) return "PAPER";
+            return "SCISSORS";
+        }
+        function playRound(playerSelection, computerSelection) {
+            const win = (computerSelection === "ROCK" && playerSelection === "PAPER") || (computerSelection === 'SCISSORS' && playerSelection === 'ROCK') || (computerSelection === 'PAPER' && playerSelection === 'SCISSORS');
+            if (computerSelection === playerSelection) return "It's a draw :|";
+            if (win) {
+                humanScore++;
+                return "You win!";
+            }
+            computerScore++;
+            return "You lose!";
+        }
+        let humanChoice = prompt('Choose: Rock/Paper/Scissors', '');
+        const playerSelection = humanChoice.toUpperCase();
+        const computerSelection = getComputerChoice();
+        playRoundResult = playRound(playerSelection, computerSelection);
+
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(`Player pick: ${playerSelection}`);
+        console.log(`Computer pick: ${computerSelection}`);
     }
 }
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
-console.log(playRound());
-console.log(computerScore);
-console.log(humanScore);
+playGame();
+
+console.log(`Computer score: ${computerScore}`);
+console.log(`Player score: ${humanScore}`);
