@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <script src="javascript.js"></script>
+    <div class="buttons">
+        <button data-selection="ROCK" class="gameButton">✊</button>
+        <button data-selection="PAPER" class="gameButton">✋</button>
+        <button data-selection="SCISSORS" class="gameButton">✌️</button>
+    </div>
+    <div class="results">
+        <div>
+            You
+            <span class="result-score" data-your-score>0</span>
+        </div>
+        <div data-final-column>
+            Computer
+            <span class="result-score" data-computer-score>0</span>
+        </div>
+    </div>
+    <!-- <div class="result-selection winner">✊</div>
+    <div class="result-selection">✌</div> -->
+    <script src="javascript.js" defer></script>
 </body>
+
 </html>
